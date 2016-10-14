@@ -17,7 +17,6 @@ class MyHTMLParser(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
         self.lastAttr    = None
-        self.lasttag = None
         self.inLink = False
         self.titles = []
         self.lastTitle = ''
@@ -25,7 +24,6 @@ class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         self.inLink = False
         global count #using to mark rank - first occurence will be count/rank1 last occurence will be count/rank250
-        self.lasttag = tag
         if tag == 'td':
             for name,value in attrs:
                 if name =='class' and value=='titleColumn':
